@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load pyproblog_tags %}
+
+    {% block title %}
+        PyProgrammer - Home
+    {% endblock %}
+
+    {% block content %}
+    <!-- Page Header -->
+    <!-- Set your background color for this header on the line below. -->
+    <header class="intro-header" style='background-color: #122b40'>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>PyProgrammer</h1>
+                        <hr class="small">
+                        <span class="subheading">A simple blog about Python.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12  col-md-8">
+                {% for post in posts %}
+                <div class="post-preview">
+                    <a href="{{ post.get_absolute_url }}">
+                        <h2 class="post-title">
+                            {{ post.title }}
+                        </h2>
+                        <h3 class="post-subtitle">
+                            {{ post.subheading }}
+                        </h3>
+                    </a>
+                    <p class="post-meta">This post is about:
+                        {% for tag in post.tags.all %}
+                            <a href="{% url 'pyproblog:entry_tag' tag.tagname %}"> {{ tag.tagname }} </a>
+                            {% if not forloop.last %}, {% endif %}
+                        {% endfor %}<br>
+                        Published by {{ post.author }} on {{ post.published }}
+                    </p>
+                </div>
+
+                <hr>
+                {% endfor %}
+                <!-- Pager -->
+                {% include "pagination.html" with page=page_obj %}
+            </div>
+
+            <div class="col-xs-12  col-md-4">
+                <br>
+                <div class="post-preview">
+                  <h1>About me</h1>
+                    <p>
+                        <img src="https://pyprogrammer.com/media/img/hor_fWLXffh.jpg" style="width: 100%">
+                    </p>
+                  <p class="post-preview">
+                    My name is <strong>Jose Maria</strong>. I'm a passionate software developer from
+                    Spain, currently working in The Netherlands...
+                      <a href="{% url 'pyproblog:about' %}">Read more</a>
+                  </p>
+                </div>
+                <div class="post-heading">
+                  <a href="https://github.com/pyprogrammerblog" target="_blank" title="GitHub">
+                    <i class="fa fa-github-alt"></i>
+                  </a>
+                    <i> &nbsp;</i>
+                  <a href="https://twitter.com/pyprogrammer88" target="_blank" title="Twitter">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                    <i> &nbsp;</i>
+                  <a href="https://www.facebook.com/pyprogrammerblog/" target="_blank" title="Facebook">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                    <i> &nbsp;</i>
+                  <a href="https://www.linkedin.com/in/jos%C3%A9-mar%C3%ADa-v%C3%A1zquez-jim%C3%A9nez-2a887768/"
+                     target="_blank" title="LinkedIn">
+                    <i class="fa fa-linkedin"></i>
+                  </a>
+                </div>
+                <br>
+                <div class="post-preview">
+                    <h1>Categories</h1>
+                     <p>I've written {% total_posts %} posts so far in: </p>
+                    {% categories as categories %}
+                    {% for tag in categories %}
+                        <ul>
+                            <li><a href="{% url 'pyproblog:entry_tag' tag.tagname %}">{{  tag.tagname }} ({{ tag.blogentry_set.all.count }})</a> </li>
+                        </ul>
+                    {% endfor %}
+                </div>
+                <br>
+                <div class="post-preview">
+                  <h1>Latest posts</h1>
+                    <p>
+                    {% latest_posts as latest_posts %}
+                    {% for post in latest_posts %}
+                        <ul>
+                            <li><a href="{{ post.get_absolute_url }}">{{  post.title }}</a> </li>
+                        </ul>
+                    {% endfor %}
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% endblock %}

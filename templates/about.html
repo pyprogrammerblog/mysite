@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+    {% block title %}
+        PyProgrammer - About
+    {% endblock %}
+
+    {% block content %}
+    <!-- Page Header -->
+    <!-- Set your background color for this header on the line below. -->
+    <header class="intro-header" style="background-color: #122b40">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="page-heading">
+                        <h1>About Me</h1>
+                        <hr class="small">
+                        <span class="subheading">A brief description about this blog and my life.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <blockquote>Courage and perseverance have a magical talisman, before which difficulties disappear and obstacles vanish into air. - John Quincy Adams.</blockquote>
+                <p>Hello guys! My name is Jose-Maria, I was born in 1988 in Spain but I am currently living and working in The Netherlands for more than four years.</p>
+                <p>Since I was a child I feel attraction for science and technology so I perform MSc. in Chemical Engineering.
+                    For many years I did programming as a hobby, but now it is my way of living. I am working as a developer for the pharmaceutical sector.</p>
+
+
+                <p><img src="{% static 'img/greatwall.jpg' %}" width="100%"/></p>
+                <span class="caption text-muted">Great Wall - China.</span>
+                <p>In this series of tutorials I will try to expose and clarify some concepts that I have learnt everyday as a programmer with Python in Data Science and Web Apps.</p>
+                <p>By the way, my favourite languages are Python, C and C++. I hope you enjoy this blog a lot!</p>
+                <p><img src="https://pyprogrammer.com/media/img/ams.jpg" width="100%"/></p>
+                <span class="caption text-muted">Amstel River - Amsterdam.</span>
+                <blockquote>An investment in knowledge pays the best interest. - Benjamin Franklin</blockquote>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <p>Hello!</p>
+    <p>Hope you are doing ok!</p>
+
+    <p>In order to finish registration please click in this email {{ link }}.
+        I hope you like this blog and follow me in this new adventure.</p>
+    <p>I hope you like it!</p>
+
+    <p>Kind regards,</p>
+    <p>Jose Maria</p>
+
+    <br>
+    <p>You can unsubscribe from this list by clicking <a href="{% url 'pyproblog:unsubscribe' unsubscribe_code %}">here</a>.</p>
+</body>
+</html>

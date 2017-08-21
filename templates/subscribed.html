@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+    {% block title %}
+        PyProgrammer - Subscribed
+    {% endblock %}
+
+    {% block content %}
+    <!-- Page Header -->
+    <!-- Set your background color for this header on the line below. -->
+    <header class="intro-header" style="background-color: #122b40">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="page-heading">
+                        <h1>Thanks!</h1>
+                        <hr class="small">
+                        <span class="subheading">Thanks for your subscription.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>Everything was done perfectly!</p>
+                <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
+                <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
+                <!-- NOTE: To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
+                <div>
+                    <div class='alert alert-success'>
+                          <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>
+                          </button>
+                        <strong>Thanks for your subscription {{ message }}! You will receive weekly alerts with new contents.</strong>
+                     </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

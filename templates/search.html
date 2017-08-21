@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+
+    {% block title %}
+        PyProgrammer - Search
+    {% endblock %}
+
+    {% block content %}
+    <!-- Page Header -->
+    <!-- Set your background color for this header on the line below. -->
+    <header class="intro-header" style='background-color: #122b40'>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>Search</h1>
+                        <hr class="small">
+                        <span class="subheading">Please search for entries in the archive of this blog.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+      <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>Search for entries and tags in all our posts.</p>
+                <form method="post" action="." role="search">
+                    {% csrf_token %}
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Search</label>
+                            <input type="text" class="form-control" name="search" placeholder="Searching for tags or posts..." id="search">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="row-control-group">
+                        <div class="form-group col-xs-12">
+                            <button type="submit" class="btn btn-default">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+        <br>
+       <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                {% for post in post_entries %}
+                <ul>
+                    <li>
+                        <div class="post-preview">
+                            <a href="{{ post.get_absolute_url }}">
+                                <h3 class="post-preview">
+                                    {{ post.title }}
+                                </h3>
+                             </a>
+                            <p class="post-meta">This post is about: {% for tag in post.tags.all %}{{ tag.tagname }} {% if not forloop.last %}, {% endif %}{% endfor %}<br>
+                            Published by {{ post.author }} on {{ post.published }}</p>
+                        </div>
+                    </li>
+                </ul>
+                {% empty %}
+                <div class="post-preview">
+                    <p>{{ message }}</p>
+                </div>
+                <hr>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

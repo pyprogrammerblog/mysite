@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+    {% block title %}
+        PyProgrammer - Subscribe
+    {% endblock %}
+
+    {% block content %}
+    <!-- Page Header -->
+    <!-- Set your background color for this header on the line below. -->
+    <header class="intro-header" style="background-color: #122b40">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="page-heading">
+                        <h1>Subscribe</h1>
+                        <hr class="small">
+                        <span class="subheading">Subscribe to the newsletter!</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>In order to subscribe please fill this form! Then you will receibe emails with a notification every time
+                    there is a new post. If you have any question, do not hesitate to contact me!</p>
+                <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
+                <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
+                <!-- NOTE: To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
+                        {% if errors %}
+                        <div>
+                            <div class='alert alert-danger'>
+                                <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>
+                                </button>
+                                <strong>{{ form.email.errors }}</strong>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if success %}
+                        <div>
+                            <div class='alert alert-success'>
+                                <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>
+                                </button>
+                                <strong>Thanks for your subscription! In order to finish with this process please check your email inbox.</strong>
+                            </div>
+                        </div>
+                        {% endif %}
+
+               <form name="" id="" method="post" action=".">
+                   {% csrf_token %}
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Email Address</label>
+                            <input type="email" class="form-control" placeholder="Email Address" id="email" name="email" required data-validation-required-message="Please enter your email address.">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row control-group">
+                        <script src='https://www.google.com/recaptcha/api.js'></script>
+                        <div class="g-recaptcha" data-sitekey="6LcDHRsUAAAAAEXdtmPV_YG_P3LkTglDEpoeRL7S"></div>
+                    </div>
+                    <br>
+                    <div id="success"></div>
+                    <div class="row">
+                        <div class="form-group col-xs-12">
+                            <button type="submit" class="btn btn-default">Subscribe</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

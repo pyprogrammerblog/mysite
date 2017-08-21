@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+
+
+<html lang="en">
+<head>
+    {% include "head_meta.html" %}
+    <title>{% block title %}PyProgrammer{% endblock %}</title>
+    {% include "head_css.html" %}
+</head>
+
+<body>
+    {% include "navbar.html" %}
+
+    {% block content %}
+    {% endblock %}
+
+    <hr>
+
+    <!-- Footer -->
+    {% include "footer.html" %}
+    {% include "javascript.html" %}
+</body>
+
+</html>
