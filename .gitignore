@@ -57,3 +57,5 @@ media
 db.sqlite3
 media
 static
+mysite_celery_scheduler.conf
+mysite_celery.conf
