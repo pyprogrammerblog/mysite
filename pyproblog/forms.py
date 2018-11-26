@@ -14,11 +14,14 @@ class ContactForm(forms.ModelForm):
         fields = ('name', 'email', 'message')
 
     def send_email_to_me(self):
-        subject = 'Jose, you have a new message in PyProgrammer admin'
-        body = 'A new message from {}, with email {}, with body {} has been send to you, so please ' \
-               'check your admin pannel!'.format(self.cleaned_data.get('name'),
-                                                 self.cleaned_data.get('email'),
-                                                 self.cleaned_data.get('message'))
+        subject = 'Jose, you have a new message in PyProgrammer'
+        body = 'A new message from {},\n' \
+               'with email {},\n' \
+               'with body:\n ' \
+               '{}\n' \
+               'has been send to you, so please check your admin panel!'.format(self.cleaned_data.get('name'),
+                                                                                self.cleaned_data.get('email'),
+                                                                                self.cleaned_data.get('message'))
         send_email_to_me.delay(subject, body)
 
 
