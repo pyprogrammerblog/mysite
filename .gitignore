@@ -60,3 +60,4 @@ static
 mysite_celery_scheduler.conf
 mysite_celery.conf
 letsencrypt
+notes.txt
