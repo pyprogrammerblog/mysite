@@ -1,15 +1,32 @@
 # mysite
 
-Personal Blog:
+[PyProgrammer.com](https://pyprogrammer.com)
 
-1. git clone https://github.com/pyprogrammerblog/mysite
-2. virtualenv -p python3 .
-3. pip install -r requirements.txt
-4. python3 manage.py collectstatics
-5. python3 manage.py migrate
-6. python3 manage.py runserver
+## Installation
 
-Locally, in order to run redis for celery:
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 
-7. celery --app=mysite.celery:app worker --loglevel=INFO
-8. celery -A mysite beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+```bash
+git clone https://github.com/pyprogrammerblog/mysite
+virtualenv -p python3
+pip install -r requirements.txt
+python3 manage.py collectstatics
+python3 manage.py migrate
+python3 manage.py runserver
+```
+
+## Usage
+
+```bash
+
+celery --app=mysite.celery:app worker --loglevel=INFO
+celery -A mysite beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+```
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
