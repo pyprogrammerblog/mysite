@@ -15,7 +15,7 @@ django-filters==0.2.1
 django-import-export==0.5.1
 django-markdown==0.8.4
 django-rest-swagger==2.1.2
-djangorestframework==3.6.3
+djangorestframework==3.11.2
 et-xmlfile==1.0.1
 idna==2.5
 itypes==1.1.0
